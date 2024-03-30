@@ -27,18 +27,22 @@
 <h2>Eastern Conference</h2>
 <table id="eastTable">
     <tr>
+        <th>Rank</th>
         <th>Team</th>
         <th>Wins</th>
         <th>Losses</th>
+        <th>Win Percent</th>
     </tr>
 </table>
 
 <h2>Western Conference</h2>
 <table id="westTable">
     <tr>
+        <th>Rank</th>
         <th>Team</th>
         <th>Wins</th>
         <th>Losses</th>
+        <th>Win Percent</th>
     </tr>
 </table>
 
@@ -46,38 +50,38 @@
     // Define teams and their initial records
     const teams = {
         east: [
-            { name: 'Boston Celtics', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Brooklyn Nets', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Milwaukee Bucks', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Philadelphia 76ers', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Cleveland Cavaliers', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Toronto Raptors', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Chicago Bulls', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Miami Heat', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Atlanta Hawks', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'New York Knicks', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Washington Wizards', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Charlotte Hornets', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Indiana Pacers', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Detroit Pistons', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Orlando Magic', wins: 0, losses: 0, gamesPlayed: 0 }
+            { name: 'Boston Celtics', wins: 0, losses: 0, strength: 50 },
+            { name: 'Brooklyn Nets', wins: 0, losses: 0, strength: 40 },
+            { name: 'Milwaukee Bucks', wins: 0, losses: 0, strength: 60 },
+            { name: 'Philadelphia 76ers', wins: 0, losses: 0, strength: 10 },
+            { name: 'Cleveland Cavaliers', wins: 0, losses: 0, strength: 40 },
+            { name: 'Toronto Raptors', wins: 0, losses: 0, strength: 70 },
+            { name: 'Chicago Bulls', wins: 0, losses: 0, strength: 70 },
+            { name: 'Miami Heat', wins: 0, losses: 0, strength: 30 },
+            { name: 'Atlanta Hawks', wins: 0, losses: 0, strength: 90 },
+            { name: 'New York Knicks', wins: 0, losses: 0, strength: 30 },
+            { name: 'Washington Wizards', wins: 0, losses: 0, strength: 50 },
+            { name: 'Charlotte Hornets', wins: 0, losses: 0, strength: 70 },
+            { name: 'Indiana Pacers', wins: 0, losses: 0, strength: 40 },
+            { name: 'Detroit Pistons', wins: 0, losses: 0, strength: 20 },
+            { name: 'Orlando Magic', wins: 0, losses: 0, strength: 60 }
         ],
         west: [
-            { name: 'Los Angeles Lakers', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Golden State Warriors', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Phoenix Suns', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'LA Clippers', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Denver Nuggets', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Dallas Mavericks', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Memphis Grizzlies', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Minnesota Timberwolves', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'New Orleans Pelicans', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Portland Trail Blazers', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Sacramento Kings', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'San Antonio Spurs', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Utah Jazz', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Oklahoma City Thunder', wins: 0, losses: 0, gamesPlayed: 0 },
-            { name: 'Houston Rockets', wins: 0, losses: 0, gamesPlayed: 0 }
+            { name: 'Los Angeles Lakers', wins: 0, losses: 0, strength: 20 },
+            { name: 'Golden State Warriors', wins: 0, losses: 0, strength: 60 },
+            { name: 'Phoenix Suns', wins: 0, losses: 0, strength: 60 },
+            { name: 'LA Clippers', wins: 0, losses: 0, strength: 40 },
+            { name: 'Denver Nuggets', wins: 0, losses: 0, strength: 70 },
+            { name: 'Dallas Mavericks', wins: 0, losses: 0, strength: 80 },
+            { name: 'Memphis Grizzlies', wins: 0, losses: 0, strength: 30 },
+            { name: 'Minnesota Timberwolves', wins: 0, losses: 0, strength: 60 },
+            { name: 'New Orleans Pelicans', wins: 0, losses: 0, strength: 80 },
+            { name: 'Portland Trail Blazers', wins: 0, losses: 0, strength: 30 },
+            { name: 'Sacramento Kings', wins: 0, losses: 0, strength: 20 },
+            { name: 'San Antonio Spurs', wins: 0, losses: 0, strength: 10 },
+            { name: 'Utah Jazz', wins: 0, losses: 0, strength: 40 },
+            { name: 'Oklahoma City Thunder', wins: 0, losses: 0, strength: 50 },
+            { name: 'Houston Rockets', wins: 0, losses: 0, strength: 60 }
         ]
     };
     function resetTeamRecords() {
@@ -94,8 +98,15 @@
 
     // Function to simulate a game
     function simulateGame(team1, team2) {
-        const randomResult = Math.random() < 0.5;
-        if (randomResult) {
+        // Calculate the probability of team1 winning based on their strengths
+        const totalStrength = team1.strength + team2.strength;
+        const team1Probability = team1.strength / totalStrength;
+
+        // Generate a random number between 0 and 1
+        const randomResult = Math.random();
+
+        // Determine the game outcome based on probabilities and randomness
+        if (randomResult < team1Probability) {
             team1.wins++;
             team2.losses++;
         } else {
@@ -125,6 +136,8 @@
             }
         }
 
+        //simulate between conference
+
         for(let j = 0; j<16; j++) {
             for (let i = 0; i < teams.west.length; i++) {
 
@@ -133,23 +146,12 @@
 
             }
         }
+        //each teams plays 10 more intraconference games
         for(let j = 0; j<10; j++) {
             for (let i = 0; i < teams.west.length; i++) {
-
                 simulateGame(teams.west[i], teams.east[i]);
-
-
             }
         }
-/*
-        for (let i = 0; i < 11; i++) {
-            for (let j = i + 1; j < teams.east.length; j++) {
-                simulateGame(teams.west[i], teams.east[j]);
-
-            }
-        }*/
-
-
         displayResults();
     }
 
@@ -159,23 +161,34 @@
         const westTable = document.getElementById('westTable');
 
         // Clear existing table rows
-        eastTable.innerHTML = '<tr><th>Team</th><th>Wins</th><th>Losses</th></tr>';
-        westTable.innerHTML = '<tr><th>Team</th><th>Wins</th><th>Losses</th></tr>';
+        eastTable.innerHTML = '<tr><th>Rank</th><th>Team</th><th>Wins</th><th>Losses</th><th>Win Percent</th></tr>';
+        westTable.innerHTML = '<tr><th>Rank</th><th>Team</th><th>Wins</th><th>Losses</th><th>Win Percent</th></tr>';
+
+
+        // Sort teams by wins (most wins at the top)
+        const sortedEastTeams = teams.east.slice().sort((a, b) => b.wins - a.wins);
+        const sortedWestTeams = teams.west.slice().sort((a, b) => b.wins - a.wins);
 
         // Add new rows for Eastern Conference teams
-        teams.east.forEach(team => {
+        sortedEastTeams.forEach((team, index) => {
             const row = eastTable.insertRow(-1);
-            row.insertCell(0).textContent = team.name;
-            row.insertCell(1).textContent = team.wins;
-            row.insertCell(2).textContent = team.losses;
+            const winPercentage = (team.wins / (team.wins + team.losses) * 100).toFixed(2);
+            row.insertCell(0).textContent = index + 1;
+            row.insertCell(1).textContent = team.name;
+            row.insertCell(2).textContent = team.wins;
+            row.insertCell(3).textContent = team.losses;
+            row.insertCell(4).textContent = winPercentage + "%";
         });
 
         // Add new rows for Western Conference teams
-        teams.west.forEach(team => {
+        sortedWestTeams.forEach((team, index) => {
             const row = westTable.insertRow(-1);
-            row.insertCell(0).textContent = team.name;
-            row.insertCell(1).textContent = team.wins;
-            row.insertCell(2).textContent = team.losses;
+            const winPercentage = (team.wins / (team.wins + team.losses) * 100).toFixed(2);
+            row.insertCell(0).textContent = index + 1;
+            row.insertCell(1).textContent = team.name;
+            row.insertCell(2).textContent = team.wins;
+            row.insertCell(3).textContent = team.losses;
+            row.insertCell(4).textContent = winPercentage + "%";
         });
     }
 
