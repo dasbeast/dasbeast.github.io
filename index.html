@@ -2,9 +2,180 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Season Simulator</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-<h1>Hello World</h1>
+<h1>NBA Season Simulator</h1>
+<button id="simulateButton">Simulate NBA Season</button>
+<h2>Eastern Conference</h2>
+<table id="eastTable">
+    <tr>
+        <th>Team</th>
+        <th>Wins</th>
+        <th>Losses</th>
+    </tr>
+</table>
+
+<h2>Western Conference</h2>
+<table id="westTable">
+    <tr>
+        <th>Team</th>
+        <th>Wins</th>
+        <th>Losses</th>
+    </tr>
+</table>
+
+<script>
+    // Define teams and their initial records
+    const teams = {
+        east: [
+            { name: 'Boston Celtics', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Brooklyn Nets', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Milwaukee Bucks', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Philadelphia 76ers', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Cleveland Cavaliers', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Toronto Raptors', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Chicago Bulls', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Miami Heat', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Atlanta Hawks', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'New York Knicks', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Washington Wizards', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Charlotte Hornets', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Indiana Pacers', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Detroit Pistons', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Orlando Magic', wins: 0, losses: 0, gamesPlayed: 0 }
+        ],
+        west: [
+            { name: 'Los Angeles Lakers', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Golden State Warriors', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Phoenix Suns', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'LA Clippers', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Denver Nuggets', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Dallas Mavericks', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Memphis Grizzlies', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Minnesota Timberwolves', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'New Orleans Pelicans', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Portland Trail Blazers', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Sacramento Kings', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'San Antonio Spurs', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Utah Jazz', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Oklahoma City Thunder', wins: 0, losses: 0, gamesPlayed: 0 },
+            { name: 'Houston Rockets', wins: 0, losses: 0, gamesPlayed: 0 }
+        ]
+    };
+    function resetTeamRecords() {
+        teams.east.forEach(team => {
+            team.wins = 0;
+            team.losses = 0;
+        });
+
+        teams.west.forEach(team => {
+            team.wins = 0;
+            team.losses = 0;
+        });
+    }
+
+    // Function to simulate a game
+    function simulateGame(team1, team2) {
+        const randomResult = Math.random() < 0.5;
+        if (randomResult) {
+            team1.wins++;
+            team2.losses++;
+        } else {
+            team1.losses++;
+            team2.wins++;
+        }
+    }
+
+    // Function to simulate the entire NBA season
+    function simulateNBASeason() {
+        resetTeamRecords();
+
+        // Simulate games within each conference
+        console.log("Simulating games within each conference...");
+        for (let i = 0; i < teams.east.length; i++) {
+            for (let j = i + 1; j < teams.east.length; j++) {
+                console.log(`Simulating game between ${teams.east[i].name} and ${teams.east[j].name}`);
+                simulateGame(teams.east[i], teams.east[j]);
+                simulateGame(teams.east[j], teams.east[i]);
+            }
+        }
+
+        for (let i = 0; i < teams.west.length; i++) {
+            for (let j = i + 1; j < teams.west.length; j++) {
+                console.log(`Simulating game between ${teams.west[i].name} and ${teams.west[j].name}`);
+                simulateGame(teams.west[i], teams.west[j]);
+                simulateGame(teams.west[j], teams.west[i]);
+            }
+        }
+
+        // Log team records
+        console.log("Team records after simulating conference games:");
+        console.log("Eastern Conference:", teams.east);
+        console.log("Western Conference:", teams.west);
+
+        // Ensure each team plays exactly 82 games
+        console.log("Simulating remaining games...");
+        let gamesPlayedPerTeam = teams.east[0].gamesPlayed; // Assuming all teams have played the same number of games initially
+        while (gamesPlayedPerTeam < 82) {
+            const eastTeamIndex = Math.floor(Math.random() * teams.east.length);
+            const westTeamIndex = Math.floor(Math.random() * teams.west.length);
+
+            console.log(`Simulating game between ${teams.east[eastTeamIndex].name} and ${teams.west[westTeamIndex].name}`);
+            simulateGame(teams.east[eastTeamIndex], teams.west[westTeamIndex]);
+            gamesPlayedPerTeam++;
+        }
+
+
+        displayResults();
+    }
+
+    // Function to display the results in the tables
+    function displayResults() {
+        const eastTable = document.getElementById('eastTable');
+        const westTable = document.getElementById('westTable');
+
+        // Clear existing table rows
+        eastTable.innerHTML = '<tr><th>Team</th><th>Wins</th><th>Losses</th></tr>';
+        westTable.innerHTML = '<tr><th>Team</th><th>Wins</th><th>Losses</th></tr>';
+
+        // Add new rows for Eastern Conference teams
+        teams.east.forEach(team => {
+            const row = eastTable.insertRow(-1);
+            row.insertCell(0).textContent = team.name;
+            row.insertCell(1).textContent = team.wins;
+            row.insertCell(2).textContent = team.losses;
+        });
+
+        // Add new rows for Western Conference teams
+        teams.west.forEach(team => {
+            const row = westTable.insertRow(-1);
+            row.insertCell(0).textContent = team.name;
+            row.insertCell(1).textContent = team.wins;
+            row.insertCell(2).textContent = team.losses;
+        });
+    }
+
+    // Add event listener to the button
+    const simulateButton = document.getElementById('simulateButton');
+    simulateButton.addEventListener('click', simulateNBASeason);
+</script>
 </body>
 </html>
