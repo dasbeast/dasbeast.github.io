@@ -46,42 +46,57 @@
     </tr>
 </table>
 
+<div id="westPlayoffBracket">
+    <!-- Playoff bracket will be displayed here -->
+</div>
+<div id="eastPlayoffBracket">
+    <!-- Playoff bracket will be displayed here -->
+</div>
+
+<div id="westSemiFinalsBracket">
+    <!-- Playoff bracket will be displayed here -->
+</div>
+<div id="eastSemiFinalsBracket">
+    <!-- Playoff bracket will be displayed here -->
+</div>
+
+
 <script>
     // Define teams and their initial records
     const teams = {
         east: [
-            { name: 'Boston Celtics', wins: 0, losses: 0, strength: 50 },
-            { name: 'Brooklyn Nets', wins: 0, losses: 0, strength: 40 },
-            { name: 'Milwaukee Bucks', wins: 0, losses: 0, strength: 60 },
-            { name: 'Philadelphia 76ers', wins: 0, losses: 0, strength: 10 },
-            { name: 'Cleveland Cavaliers', wins: 0, losses: 0, strength: 40 },
-            { name: 'Toronto Raptors', wins: 0, losses: 0, strength: 70 },
-            { name: 'Chicago Bulls', wins: 0, losses: 0, strength: 70 },
-            { name: 'Miami Heat', wins: 0, losses: 0, strength: 30 },
-            { name: 'Atlanta Hawks', wins: 0, losses: 0, strength: 90 },
-            { name: 'New York Knicks', wins: 0, losses: 0, strength: 30 },
-            { name: 'Washington Wizards', wins: 0, losses: 0, strength: 50 },
-            { name: 'Charlotte Hornets', wins: 0, losses: 0, strength: 70 },
-            { name: 'Indiana Pacers', wins: 0, losses: 0, strength: 40 },
-            { name: 'Detroit Pistons', wins: 0, losses: 0, strength: 20 },
-            { name: 'Orlando Magic', wins: 0, losses: 0, strength: 60 }
+            { name: 'Boston Celtics', wins: 0, losses: 0, strength: 100, playoffWins: 0 },
+            { name: 'Brooklyn Nets', wins: 0, losses: 0, strength: 42, playoffWins: 0 },
+            { name: 'Milwaukee Bucks', wins: 0, losses: 0, strength: 64, playoffWins: 0 },
+            { name: 'Philadelphia 76ers', wins: 0, losses: 0, strength: 17, playoffWins: 0 },
+            { name: 'Cleveland Cavaliers', wins: 0, losses: 0, strength: 46, playoffWins: 0 },
+            { name: 'Toronto Raptors', wins: 0, losses: 0, strength: 73, playoffWins: 0 },
+            { name: 'Chicago Bulls', wins: 0, losses: 0, strength: 76, playoffWins: 0 },
+            { name: 'Miami Heat', wins: 0, losses: 0, strength: 34, playoffWins: 0 },
+            { name: 'Atlanta Hawks', wins: 0, losses: 0, strength: 97, playoffWins: 0 },
+            { name: 'New York Knicks', wins: 0, losses: 0, strength: 36, playoffWins: 0 },
+            { name: 'Washington Wizards', wins: 0, losses: 0, strength: 57, playoffWins: 0 },
+            { name: 'Charlotte Hornets', wins: 0, losses: 0, strength: 72, playoffWins: 0 },
+            { name: 'Indiana Pacers', wins: 0, losses: 0, strength: 44, playoffWins: 0 },
+            { name: 'Detroit Pistons', wins: 0, losses: 0, strength: 26, playoffWins: 0 },
+            { name: 'Orlando Magic', wins: 0, losses: 0, strength: 62, playoffWins: 0 }
         ],
         west: [
-            { name: 'Los Angeles Lakers', wins: 0, losses: 0, strength: 20 },
-            { name: 'Golden State Warriors', wins: 0, losses: 0, strength: 60 },
-            { name: 'Phoenix Suns', wins: 0, losses: 0, strength: 60 },
-            { name: 'LA Clippers', wins: 0, losses: 0, strength: 40 },
-            { name: 'Denver Nuggets', wins: 0, losses: 0, strength: 70 },
-            { name: 'Dallas Mavericks', wins: 0, losses: 0, strength: 80 },
-            { name: 'Memphis Grizzlies', wins: 0, losses: 0, strength: 30 },
-            { name: 'Minnesota Timberwolves', wins: 0, losses: 0, strength: 60 },
-            { name: 'New Orleans Pelicans', wins: 0, losses: 0, strength: 80 },
-            { name: 'Portland Trail Blazers', wins: 0, losses: 0, strength: 30 },
-            { name: 'Sacramento Kings', wins: 0, losses: 0, strength: 20 },
-            { name: 'San Antonio Spurs', wins: 0, losses: 0, strength: 10 },
-            { name: 'Utah Jazz', wins: 0, losses: 0, strength: 40 },
-            { name: 'Oklahoma City Thunder', wins: 0, losses: 0, strength: 50 },
-            { name: 'Houston Rockets', wins: 0, losses: 0, strength: 60 }
+            { name: 'Los Angeles Lakers', wins: 0, losses: 0, strength: 21, playoffWins: 0 },
+            { name: 'Golden State Warriors', wins: 0, losses: 0, strength: 68, playoffWins: 0},
+            { name: 'Phoenix Suns', wins: 0, losses: 0, strength: 62, playoffWins: 0 },
+            { name: 'LA Clippers', wins: 0, losses: 0, strength: 41, playoffWins: 0 },
+            { name: 'Denver Nuggets', wins: 0, losses: 0, strength: 72, playoffWins: 0 },
+            { name: 'Dallas Mavericks', wins: 0, losses: 0, strength: 87, playoffWins: 0 },
+            { name: 'Memphis Grizzlies', wins: 0, losses: 0, strength: 31, playoffWins: 0 },
+            { name: 'Minnesota Timberwolves', wins: 0, losses: 0, strength: 66, playoffWins: 0 },
+            { name: 'New Orleans Pelicans', wins: 0, losses: 0, strength: 86, playoffWins: 0 },
+            { name: 'Portland Trail Blazers', wins: 0, losses: 0, strength: 32, playoffWins: 0 },
+            { name: 'Sacramento Kings', wins: 0, losses: 0, strength: 27, playoffWins: 0 },
+            { name: 'San Antonio Spurs', wins: 0, losses: 0, strength: 19, playoffWins: 0 },
+            { name: 'Utah Jazz', wins: 0, losses: 0, strength: 42, playoffWins: 0 },
+            { name: 'Oklahoma City Thunder', wins: 0, losses: 0, strength: 56, playoffWins: 0 },
+            { name: 'Houston Rockets', wins: 0, losses: 0, strength: 67, playoffWins: 0 }
         ]
     };
     function resetTeamRecords() {
@@ -106,7 +121,7 @@
         const randomResult = Math.random();
 
         // Determine the game outcome based on probabilities and randomness
-        if (randomResult < team1Probability) {
+        if (randomResult <= team1Probability) {
             team1.wins++;
             team2.losses++;
         } else {
@@ -153,6 +168,8 @@
             }
         }
         displayResults();
+        simulatePlayoffs();
+
     }
 
     // Function to display the results in the tables
@@ -191,6 +208,265 @@
             row.insertCell(4).textContent = winPercentage + "%";
         });
     }
+
+    /*function simulatePlayoffs() {
+        // Get the top 8 teams from each conference
+        const eastPlayoffTeams = teams.east.slice().sort((a, b) => b.wins - a.wins).slice(0, 8);
+        const westPlayoffTeams = teams.west.slice().sort((a, b) => b.wins - a.wins).slice(0, 8);
+
+        // Generate playoff matchups between corresponding seeds within each conference
+        let westPlayoffBracket = [];
+        let eastPlayoffBracket = [];
+        console.log(eastPlayoffTeams[0]);
+        console.log(westPlayoffTeams[0]);
+
+        // Loop to create playoff matchups for the Western Conference
+        for (let i = 0; i < westPlayoffTeams.length / 2; i++) {
+            const highSeedIndex = i;
+            const lowSeedIndex = westPlayoffTeams.length - 1 - i;
+
+            const highSeed = {
+                team: westPlayoffTeams[highSeedIndex],
+                seed: highSeedIndex + 1
+            };
+
+            const lowSeed = {
+                team: westPlayoffTeams[lowSeedIndex],
+                seed: lowSeedIndex + 1
+            };
+
+            const playoffMatchup = {
+                highSeed: highSeed,
+                lowSeed: lowSeed
+            };
+
+            westPlayoffBracket.push(playoffMatchup);
+        }
+
+        // Loop to create playoff matchups for the East Conference
+        for (let i = 0; i < eastPlayoffTeams.length / 2; i++) {
+            const highSeedIndex = i;
+            const lowSeedIndex = eastPlayoffTeams.length - 1 - i;
+
+            const highSeed = {
+                team: eastPlayoffTeams[highSeedIndex],
+                seed: highSeedIndex + 1
+            };
+
+            const lowSeed = {
+                team: eastPlayoffTeams[lowSeedIndex],
+                seed: lowSeedIndex + 1
+            };
+
+            const playoffMatchup = {
+                highSeed: highSeed,
+                lowSeed: lowSeed
+            };
+
+            eastPlayoffBracket.push(playoffMatchup);
+        }
+
+        const westSemiRound = [];
+        let winners = [];
+        for (let i = 0; i < westPlayoffBracket.length; i++) {
+            const winner = simulatePlayoffRound(westPlayoffBracket[i].highSeed, westPlayoffBracket[i].lowSeed);
+            winners[i] = winner;
+            console.log(winners[i].team.name);
+        }
+        for(let i = 0; i < winners.length - 1; i++){
+            if(winners[i].seed < winners[i+1].seed){
+                const playoffMatchup = {
+                    highSeed: winners[i],
+                    lowSeed: winners[i+1]
+                }
+                westSemiRound.push(playoffMatchup);
+            }
+            else{
+                const playoffMatchup = {
+                    highSeed: winners[i+1],
+                    lowSeed: winners[i]
+                }
+                westSemiRound.push(playoffMatchup);
+            }
+
+        }
+
+        for(let i = 0; i < westSemiRound.length - 1; i++){
+            console.log("this is a semi team: ", westSemiRound[i].highSeed.team.name);
+            console.log("this is a semi team: ", westSemiRound[i].lowSeed.team.name);
+        }
+
+    }*/
+    function simulatePlayoffs() {
+        // Get the top 8 teams from each conference
+        const eastPlayoffTeams = teams.east.slice().sort((a, b) => b.wins - a.wins).slice(0, 8);
+        const westPlayoffTeams = teams.west.slice().sort((a, b) => b.wins - a.wins).slice(0, 8);
+
+        // Generate playoff matchups between corresponding seeds within each conference
+        let westPlayoffBracket = [];
+        let eastPlayoffBracket = [];
+
+        // Loop to create playoff matchups for the Western Conference
+        for (let i = 0; i < westPlayoffTeams.length / 2; i++) {
+            const highSeedIndex = i;
+            const lowSeedIndex = westPlayoffTeams.length - 1 - i;
+
+            const highSeed = {
+                team: westPlayoffTeams[highSeedIndex],
+                seed: highSeedIndex + 1
+            };
+
+            const lowSeed = {
+                team: westPlayoffTeams[lowSeedIndex],
+                seed: lowSeedIndex + 1
+            };
+
+            const playoffMatchup = {
+                highSeed: highSeed,
+                lowSeed: lowSeed
+            };
+
+            westPlayoffBracket.push(playoffMatchup);
+        }
+
+        // Loop to create playoff matchups for the East Conference
+        for (let i = 0; i < eastPlayoffTeams.length / 2; i++) {
+            const highSeedIndex = i;
+            const lowSeedIndex = eastPlayoffTeams.length - 1 - i;
+
+            const highSeed = {
+                team: eastPlayoffTeams[highSeedIndex],
+                seed: highSeedIndex + 1
+            };
+
+            const lowSeed = {
+                team: eastPlayoffTeams[lowSeedIndex],
+                seed: lowSeedIndex + 1
+            };
+
+            const playoffMatchup = {
+                highSeed: highSeed,
+                lowSeed: lowSeed
+            };
+
+            eastPlayoffBracket.push(playoffMatchup);
+        }
+
+        // Display the playoff matchups for the Western Conference
+        const westPlayoffContainer = document.getElementById('westPlayoffBracket');
+        westPlayoffContainer.innerHTML = '';
+        westPlayoffBracket.forEach(matchup => {
+            const matchupElement = document.createElement('div');
+            matchupElement.textContent = `${matchup.highSeed.team.name} vs ${matchup.lowSeed.team.name}`;
+            westPlayoffContainer.appendChild(matchupElement);
+        });
+
+        // Display the playoff matchups for the Eastern Conference
+        const eastPlayoffContainer = document.getElementById('eastPlayoffBracket');
+        eastPlayoffContainer.innerHTML = '';
+        eastPlayoffBracket.forEach(matchup => {
+            const matchupElement = document.createElement('div');
+            matchupElement.textContent = `${matchup.highSeed.team.name} vs ${matchup.lowSeed.team.name}`;
+            eastPlayoffContainer.appendChild(matchupElement);
+        });
+
+
+
+        // Generate and display semi-final matchups
+        const westSemiFinals = generateSemiFinals(westPlayoffBracket);
+        displaySemiFinals(westSemiFinals, 'westSemiFinalsBracket');
+
+        const eastSemiFinals = generateSemiFinals(eastPlayoffBracket);
+        displaySemiFinals(eastSemiFinals, 'eastSemiFinalsBracket');
+    }
+
+    // Function to generate semi-final matchups
+    function generateSemiFinals(playoffBracket) {
+        const semiFinals = [];
+        let winners = [];
+        for (let i = 0; i < playoffBracket.length; i++) {
+            winners[i] = simulatePlayoffRound(playoffBracket[i].highSeed, playoffBracket[i].lowSeed);
+            console.log(winners[i].team.name);
+        }
+        for(let i = 0; i < winners.length - 1; i+=2){
+            if(winners[i].seed < winners[i+1].seed){
+                const playoffMatchup = {
+                    highSeed: winners[i],
+                    lowSeed: winners[i+1]
+                }
+                semiFinals.push(playoffMatchup);
+            }
+            else{
+                const playoffMatchup = {
+                    highSeed: winners[i+1],
+                    lowSeed: winners[i]
+                }
+                semiFinals.push(playoffMatchup);
+            }
+
+        }
+        return semiFinals;
+    }
+
+    // Function to display semi-final matchups
+    function displaySemiFinals(semiFinals, containerId) {
+        const semiFinalsContainer = document.getElementById(containerId);
+        semiFinalsContainer.innerHTML = '';
+        semiFinals.forEach(matchup => {
+            const matchupElement = document.createElement('div');
+            matchupElement.textContent = `${matchup.highSeed.team.name} vs ${matchup.lowSeed.team.name}`;
+            semiFinalsContainer.appendChild(matchupElement);
+        });
+    }
+
+
+    function simulatePlayoffRound(teamSeed1, teamSeed2) {
+        // Simulate a single game for the playoff round
+        let team1 = teamSeed1.team;
+        let team2 = teamSeed2.team;
+        const totalStrength = team1.strength + team2.strength;
+        const team1Probability = team1.strength / totalStrength;
+
+        while (team1.playoffWins < 4 || team2.playoffWins < 4) {
+            // Generate a random number between 0 and 1
+            const randomResult = Math.random();
+
+            // Determine the game outcome based on probabilities and randomness
+            if (randomResult <= team1Probability) {
+                team1.playoffWins++;
+
+            } else {
+
+                team2.playoffWins++;
+            }
+        }
+
+        if(team1.playoffWins === 4){
+            return teamSeed1;
+        }
+        else
+            return teamSeed2;
+
+    }
+
+    function displayPlayoffBracket(playoffBracket) {
+        const playoffContainer = document.getElementById('playoffContainer');
+        playoffContainer.innerHTML = ''; // Clear existing content
+
+        // Create elements for each matchup and append to the container
+        playoffBracket.forEach((matchup, index) => {
+            const matchupDiv = document.createElement('div');
+            matchupDiv.classList.add('matchup');
+            const matchupText = document.createElement('p');
+            matchupText.textContent = `Round ${Math.floor(index / 2) + 1} - ${matchup.eastTeam.name} vs ${matchup.westTeam.name}`;
+            const winnerText = document.createElement('p');
+            winnerText.textContent = matchup.winner ? `Winner: ${matchup.winner.name}` : 'Winner: TBD';
+            matchupDiv.appendChild(matchupText);
+            matchupDiv.appendChild(winnerText);
+            playoffContainer.appendChild(matchupDiv);
+        });
+    }
+
 
     // Add event listener to the button
     const simulateButton = document.getElementById('simulateButton');
