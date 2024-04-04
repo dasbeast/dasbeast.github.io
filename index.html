@@ -48,29 +48,48 @@
     </tr>
 </table>
 <div class="playoff-bracket">
-    <div class="matchup">
-        <p>Round 1 - Team 1 vs Team 2</p>
-        <p>Winner: TBD</p>
+    <div class="conference">
+        <h2>Western Conference</h2>
+        <div class="round">
+            <h3>First Round</h3>
+            <div id="westFirstRoundMatchup"></div>
+            <div id="westFirstRoundWinner"></div>
+        </div>
+        <div class="round">
+            <h3>Semi-Finals</h3>
+            <div id="westSemiFinalsMatchup"></div>
+            <div id="westSemiFinalsWinner"></div>
+        </div>
+        <div class="round">
+            <h3>Conference Finals</h3>
+            <div id="westConferenceFinalsMatchup"></div>
+            <div id="westConferenceFinalsWinner"></div>
+        </div>
     </div>
-    <!-- Add more matchup divs as needed -->
+    <div class="conference">
+        <h2>Eastern Conference</h2>
+        <div class="round">
+            <h3>First Round</h3>
+            <div id="eastFirstRoundMatchup"></div>
+            <div id="eastFirstRoundWinner"></div>
+        </div>
+        <div class="round">
+            <h3>Semi-Finals</h3>
+            <div id="eastSemiFinalsMatchup"></div>
+            <div id="eastSemiFinalsWinner"></div>
+        </div>
+        <div class="round">
+            <h3>Conference Finals</h3>
+            <div id="eastConferenceFinalsMatchup"></div>
+            <div id="eastConferenceFinalsWinner"></div>
+        </div>
+    </div>
 </div>
-<div id="westPlayoffBracket">
-    <!-- Playoff bracket will be displayed here -->
+<div class="round">
+    <h3>NBA Finals</h3>
+    <div id="nbaFinalsMatchup"></div>
+    <div id="nbaFinalsWinner"></div>
 </div>
-<div id="eastPlayoffBracket">
-    <!-- Playoff bracket will be displayed here -->
-</div>
-
-<div id="westSemiFinalsBracket">
-    <!-- Playoff bracket will be displayed here -->
-</div>
-<div id="eastSemiFinalsBracket">
-    <!-- Playoff bracket will be displayed here -->
-</div>
-<div id="eastFinalsBracket"></div>
-<div id="westFinalsBracket"></div>
-<div id="nbaFinalsBracket"></div>
-
 
 <script>
     // Define teams and their initial records
@@ -219,383 +238,251 @@
             row.insertCell(4).textContent = winPercentage + "%";
         });
     }
-    /*function simulatePlayoffs() {
-        // Get the top 8 teams from each conference
-        const eastPlayoffTeams = teams.east.slice().sort((a, b) => b.wins - a.wins).slice(0, 8);
-        const westPlayoffTeams = teams.west.slice().sort((a, b) => b.wins - a.wins).slice(0, 8);
 
-        // Generate playoff matchups between corresponding seeds within each conference
-        let westPlayoffBracket = [];
-        let eastPlayoffBracket = [];
-
-        // Loop to create playoff matchups for the Western Conference
-        for (let i = 0; i < westPlayoffTeams.length / 2; i++) {
-            const highSeedIndex = i;
-            const lowSeedIndex = westPlayoffTeams.length - 1 - i;
-
-            const highSeed = {
-                team: westPlayoffTeams[highSeedIndex],
-                seed: highSeedIndex + 1
-            };
-
-            const lowSeed = {
-                team: westPlayoffTeams[lowSeedIndex],
-                seed: lowSeedIndex + 1
-            };
-
-            const playoffMatchup = {
-                highSeed: highSeed,
-                lowSeed: lowSeed
-            };
-
-            westPlayoffBracket.push(playoffMatchup);
-        }
-
-        // Loop to create playoff matchups for the East Conference
-        for (let i = 0; i < eastPlayoffTeams.length / 2; i++) {
-            const highSeedIndex = i;
-            const lowSeedIndex = eastPlayoffTeams.length - 1 - i;
-
-            const highSeed = {
-                team: eastPlayoffTeams[highSeedIndex],
-                seed: highSeedIndex + 1
-            };
-
-            const lowSeed = {
-                team: eastPlayoffTeams[lowSeedIndex],
-                seed: lowSeedIndex + 1
-            };
-
-            const playoffMatchup = {
-                highSeed: highSeed,
-                lowSeed: lowSeed
-            };
-
-            eastPlayoffBracket.push(playoffMatchup);
-        }
-
-        // Display the playoff matchups for the Western Conference
-        const westPlayoffContainer = document.getElementById('westPlayoffBracket');
-        westPlayoffContainer.innerHTML = '';
-        westPlayoffBracket.forEach(matchup => {
-            const matchupElement = document.createElement('div');
-            matchupElement.textContent = `${matchup.highSeed.team.name} vs ${matchup.lowSeed.team.name}`;
-            westPlayoffContainer.appendChild(matchupElement);
-        });
-
-        // Display the playoff matchups for the Eastern Conference
-        const eastPlayoffContainer = document.getElementById('eastPlayoffBracket');
-        eastPlayoffContainer.innerHTML = '';
-        eastPlayoffBracket.forEach(matchup => {
-            const matchupElement = document.createElement('div');
-            matchupElement.textContent = `${matchup.highSeed.team.name} vs ${matchup.lowSeed.team.name}`;
-            eastPlayoffContainer.appendChild(matchupElement);
-        });
-
-
-
-        // Generate and display semi-final matchups
-        const westSemiFinals = generateSemiFinals(westPlayoffBracket);
-        displaySemiFinals(westSemiFinals, 'westSemiFinalsBracket');
-
-        const eastSemiFinals = generateSemiFinals(eastPlayoffBracket);
-        displaySemiFinals(eastSemiFinals, 'eastSemiFinalsBracket');
-    }*/
-
-    // Function to generate semi-final matchups
-    /*function generateSemiFinals(playoffBracket) {
-        const semiFinals = [];
-        let winners = [];
-        for (let i = 0; i < playoffBracket.length; i++) {
-            winners[i] = simulatePlayoffRound(playoffBracket[i].highSeed, playoffBracket[i].lowSeed);
-            console.log(winners[i].team.name);
-        }
-        for(let i = 0; i < winners.length - 1; i+=2){
-            if(winners[i].seed < winners[i+1].seed){
-                const playoffMatchup = {
-                    highSeed: winners[i],
-                    lowSeed: winners[i+1]
-                }
-                semiFinals.push(playoffMatchup);
-            }
-            else{
-                const playoffMatchup = {
-                    highSeed: winners[i+1],
-                    lowSeed: winners[i]
-                }
-                semiFinals.push(playoffMatchup);
-            }
-
-        }
-        return semiFinals;
-    }
-    */
-
-
-    // Function to display semi-final matchups
-    function displaySemiFinals(semiFinals, containerId) {
-        const semiFinalsContainer = document.getElementById(containerId);
-        semiFinalsContainer.innerHTML = '';
-        semiFinals.forEach(matchup => {
-            const matchupElement = document.createElement('div');
-            matchupElement.textContent = `${matchup.highSeed.team.name} vs ${matchup.lowSeed.team.name}`;
-            semiFinalsContainer.appendChild(matchupElement);
-        });
-    }
-
-
-    /*function simulatePlayoffRound(teamSeed1, teamSeed2) {
-        // Simulate a single game for the playoff round
-        let team1 = teamSeed1.team;
-        let team2 = teamSeed2.team;
-        const totalStrength = team1.strength + team2.strength;
-        const team1Probability = team1.strength / totalStrength;
-
-        while (team1.playoffWins < 4 || team2.playoffWins < 4) {
-            // Generate a random number between 0 and 1
-            const randomResult = Math.random();
-
-            // Determine the game outcome based on probabilities and randomness
-            if (randomResult <= team1Probability) {
-                team1.playoffWins++;
-
-            } else {
-
-                team2.playoffWins++;
-            }
-        }
-
-        if(team1.playoffWins === 4){
-            return teamSeed1;
-        }
-        else
-            return teamSeed2;
-
-    }*/
-
-    /*function displayPlayoffBracket(playoffBracket) {
-        const playoffContainer = document.getElementById('playoffContainer');
-        playoffContainer.innerHTML = ''; // Clear existing content
-
-        // Create elements for each matchup and append to the container
-        playoffBracket.forEach((matchup, index) => {
-            const matchupDiv = document.createElement('div');
-            matchupDiv.classList.add('matchup');
-            const matchupText = document.createElement('p');
-            matchupText.textContent = `Round ${Math.floor(index / 2) + 1} - ${matchup.eastTeam.name} vs ${matchup.westTeam.name}`;
-            const winnerText = document.createElement('p');
-            winnerText.textContent = matchup.winner ? `Winner: ${matchup.winner.name}` : 'Winner: TBD';
-            matchupDiv.appendChild(matchupText);
-            matchupDiv.appendChild(winnerText);
-            playoffContainer.appendChild(matchupDiv);
-        });
-    }*/
 
 
 
     function simulatePlayoffs() {
+        teams.east.forEach(team => team.playoffWins = 0);
+        teams.west.forEach(team => team.playoffWins = 0);
         // Get the top 8 teams from each conference
         const eastPlayoffTeams = teams.east.slice().sort((a, b) => b.wins - a.wins).slice(0, 8);
         const westPlayoffTeams = teams.west.slice().sort((a, b) => b.wins - a.wins).slice(0, 8);
 
-        // Generate playoff matchups between corresponding seeds within each conference
-        let westPlayoffBracket = generatePlayoffBracket(westPlayoffTeams);
-        let eastPlayoffBracket = generatePlayoffBracket(eastPlayoffTeams);
 
-        // Display the initial playoff matchups
-        displayPlayoffBracket(westPlayoffBracket, 'westPlayoffBracket');
-        displayPlayoffBracket(eastPlayoffBracket, 'eastPlayoffBracket');
+        // Generate playoff matchups for each conference
+        const westPlayoffBracket = generatePlayoffBracket(westPlayoffTeams); //full of matchups
+        const eastPlayoffBracket = generatePlayoffBracket(eastPlayoffTeams);
 
-        // Simulate the first round of playoffs
-        westPlayoffBracket = simulatePlayoffRound(westPlayoffBracket);
-        eastPlayoffBracket = simulatePlayoffRound(eastPlayoffBracket);
+        console.log("playoff generated");
 
-        // Display the updated playoff brackets after the first round
-        displayPlayoffBracket(westPlayoffBracket, 'westPlayoffBracket');
-        displayPlayoffBracket(eastPlayoffBracket, 'eastPlayoffBracket');
+        // Display the first round matchups
+        displayPlayoffRound(westPlayoffBracket, 'westFirstRoundMatchup');
+        displayPlayoffRound(eastPlayoffBracket, 'eastFirstRoundMatchup');
+        console.log("First round displayed");
 
-        // Generate and display semi-final matchups
-        let westSemiFinals = generateSemiFinals(westPlayoffBracket);
-        let eastSemiFinals = generateSemiFinals(eastPlayoffBracket);
-        displaySemiFinals(westSemiFinals, 'westSemiFinalsBracket');
-        displaySemiFinals(eastSemiFinals, 'eastSemiFinalsBracket');
+        // Simulate the first round
+        const westFirstRoundWinners = simulatePlayoffRound(westPlayoffBracket);
+        const eastFirstRoundWinners = simulatePlayoffRound(eastPlayoffBracket);
+        console.log("First round simulated");
 
-        westSemiFinals = simulatePlayoffRound(westSemiFinals);
-        eastSemiFinals = simulatePlayoffRound(eastSemiFinals);
-        displayPlayoffBracket(westSemiFinals, 'westSemiFinalsBracket');
-        displayPlayoffBracket(eastSemiFinals, 'eastSemiFinalsBracket');
+        displayWinner(westFirstRoundWinners[0].highSeed.team, 'westFirstRoundWinner');
+        displayWinner(westFirstRoundWinners[0].lowSeed.team, 'westFirstRoundWinner');
+        displayWinner(westFirstRoundWinners[1].highSeed.team, 'westFirstRoundWinner');
+        displayWinner(westFirstRoundWinners[1].lowSeed.team, 'westFirstRoundWinner');
+        displayWinner(eastFirstRoundWinners[0].highSeed.team, 'eastFirstRoundWinner');
+        displayWinner(eastFirstRoundWinners[0].lowSeed.team, 'eastFirstRoundWinner');
+        displayWinner(eastFirstRoundWinners[1].highSeed.team, 'eastFirstRoundWinner');
+        displayWinner(eastFirstRoundWinners[1].lowSeed.team, 'eastFirstRoundWinner');
 
-        // Simulate conference finals
-        let { eastFinalMatchup, westFinalMatchup } = generateConferenceFinals(eastSemiFinals, westSemiFinals);
+        displayPlayoffRound(westPlayoffBracket, 'westFirstRoundMatchup');
+        displayPlayoffRound(eastPlayoffBracket, 'eastFirstRoundMatchup');
+
+        teams.east.forEach(team => team.playoffWins = 0);
+        teams.west.forEach(team => team.playoffWins = 0);
+
+        // Display the second round matchups
+        displayPlayoffRound(westFirstRoundWinners, 'westSemiFinalsMatchup');
+        displayPlayoffRound(eastFirstRoundWinners, 'eastSemiFinalsMatchup');
+        console.log("semi display");
+
+        // Simulate the second round
+        const westSemiFinalsWinners = simulatePlayoffRound(westFirstRoundWinners);
+        const eastSemiFinalsWinners = simulatePlayoffRound(eastFirstRoundWinners);
+        console.log("semi winner");
+
+        displayWinner(westSemiFinalsWinners[0].highSeed.team, 'westSemiFinalsWinner');
+        displayWinner(eastSemiFinalsWinners[0].highSeed.team, 'eastSemiFinalsWinner');
+
+        displayPlayoffRound(westFirstRoundWinners, 'westSemiFinalsMatchup');
+        displayPlayoffRound(eastFirstRoundWinners, 'eastSemiFinalsMatchup');
+
+        teams.east.forEach(team => team.playoffWins = 0);
+        teams.west.forEach(team => team.playoffWins = 0);
+
+        // Display the conference finals matchups
+        // Display the conference finals matchups
+        // Display the conference finals matchups
+        displayPlayoffRound(westSemiFinalsWinners, 'westConferenceFinalsMatchup');
+        displayPlayoffRound(eastSemiFinalsWinners, 'eastConferenceFinalsMatchup');
+
+// Simulate the conference finals
+        const westConferenceWinner = simulatePlayoffSeries(westSemiFinalsWinners[0]);
+        const eastConferenceWinner = simulatePlayoffSeries(eastSemiFinalsWinners[0]);
+
+// Display the conference winners
+        displayWinner(westConferenceWinner.team, 'westConferenceFinalsWinner');
+        displayWinner(eastConferenceWinner.team, 'eastConferenceFinalsWinner');
 
 
-        let eastFinalResult = simulatePlayoffMatchup(eastFinalMatchup.highSeed, westFinalMatchup.lowSeed);
-        let westFinalResult = simulatePlayoffMatchup(westFinalMatchup.highSeed, westFinalMatchup.lowSeed);
+        displayPlayoffRound(westSemiFinalsWinners, 'westConferenceFinalsMatchup');
+        displayPlayoffRound(eastSemiFinalsWinners, 'eastConferenceFinalsMatchup');
 
-        // Display conference finals results
-        displayConferenceFinals(eastFinalResult, 'eastFinalsBracket');
-        displayConferenceFinals(westFinalResult, 'westFinalsBracket');
+        teams.east.forEach(team => team.playoffWins = 0);
+        teams.west.forEach(team => team.playoffWins = 0);
 
-        // Simulate NBA finals
-        const nbafinals = {
-            highSeed: eastFinalResult.winnerSeed,
-            lowSeed: westFinalResult.winnerSeed,
-        };
+// Display the NBA finals matchup
+        const nbaFinalsMatchup = [
+            { highSeed: westConferenceWinner, lowSeed: eastConferenceWinner },
+        ];
+        displayPlayoffRound(nbaFinalsMatchup, 'nbaFinalsMatchup');
 
-        const nbaFinalsResult = simulatePlayoffMatchup(nbafinals.highSeed, nbafinals.lowSeed);
+// Simulate the NBA finals
+        const nbaChampion = simulatePlayoffSeries(nbaFinalsMatchup[0]);
 
-        // Display NBA finals result
-        displayNBAFinals(nbaFinalsResult, 'nbaFinalsBracket');
+        displayPlayoffRound(nbaFinalsMatchup, 'nbaFinalsMatchup');
+
+// Display the NBA champion
+        displayWinner(nbaChampion.team, 'nbaFinalsWinner');
 
     }
 
     function generatePlayoffBracket(playoffTeams) {
         const playoffBracket = [];
 
-        for (let i = 0; i < playoffTeams.length / 2; i++) {
-            const highSeedIndex = i;
-            const lowSeedIndex = playoffTeams.length - 1 - i;
-
+        for (let i = 0; i < playoffTeams.length; i += 2) {
             const highSeed = {
-                team: playoffTeams[highSeedIndex],
-                seed: highSeedIndex + 1,
+                team: playoffTeams[i],
+                //highSeed:
+                seed: i + 1,
             };
 
             const lowSeed = {
-                team: playoffTeams[lowSeedIndex],
-                seed: lowSeedIndex + 1,
+                team: playoffTeams[i + 1],
+                seed: playoffTeams.length - i,
             };
 
-            const playoffMatchup = {
+            const matchup = {
                 highSeed: highSeed,
-                lowSeed: lowSeed,
-                winner: null,
+                lowSeed: lowSeed
             };
 
-            playoffBracket.push(playoffMatchup);
+            playoffBracket.push(matchup);
         }
 
         return playoffBracket;
     }
 
     function simulatePlayoffRound(playoffBracket) {
-        const updatedPlayoffBracket = [];
+        const winners = [];
 
         for (const matchup of playoffBracket) {
-            const winner = simulatePlayoffSeries(matchup.highSeed.team, matchup.lowSeed.team);
-            const winnerSeed = winner === matchup.highSeed.team ? matchup.highSeed : matchup.lowSeed;
-
-            updatedPlayoffBracket.push({
-                ...matchup,
-                winner: winner,
-                winnerSeed: winnerSeed,
-            });
+            const winner = simulatePlayoffSeries(matchup);
+            winners.push(winner);
         }
 
-        return updatedPlayoffBracket;
+        const nextRoundBracket = [];
+
+        for (let i = 0; i < winners.length; i += 2) {
+            const matchup = {
+                highSeed: winners[i],
+                lowSeed: winners[i + 1],
+            };
+            nextRoundBracket.push(matchup);
+        }
+
+        return nextRoundBracket;
     }
 
+    function simulatePlayoffSeries(matchup) {
 
-    function simulatePlayoffSeries(team1, team2) {
-        let team1Wins = 0;
-        let team2Wins = 0;
+        const highSeed = matchup.highSeed.team;
+        const lowSeed = matchup.lowSeed.team;
+        //const { highSeed, lowSeed } = matchup;
+        let highSeedWins = 0;
+        let lowSeedWins = 0;
 
-        while (team1Wins < 4 && team2Wins < 4) {
-            const totalStrength = team1.strength + team2.strength;
-            const team1Probability = team1.strength / totalStrength;
-            const randomResult = Math.random();
 
-            if (randomResult <= team1Probability) {
-                team1Wins++;
+
+        while (true) {
+            const winner = simulatePlayoffGame(highSeed, lowSeed);
+            if (winner === highSeed) {
+                highSeedWins++;
+                highSeed.playoffWins++;
             } else {
-                team2Wins++;
+                lowSeedWins++;
+                lowSeed.playoffWins++;
+            }
+
+            if (highSeedWins === 4 || lowSeedWins === 4) {
+                break;
             }
         }
 
-        return team1Wins === 4 ? team1 : team2;
+        console.log("high",highSeedWins);
+        console.log("low", lowSeedWins);
+
+
+
+        return highSeedWins > lowSeedWins ? matchup.highSeed : matchup.lowSeed;
     }
 
-    function displayPlayoffBracket(playoffBracket, containerId) {
-        const playoffContainer = document.getElementById(containerId);
-        playoffContainer.innerHTML = '';
 
-        playoffBracket.forEach((matchup) => {
+    function simulatePlayoffGame(team1, team2) {
+        const totalStrength = team1.strength + team2.strength;
+        const team1Probability = team1.strength / totalStrength;
+        const random = Math.random();
+
+        return random < team1Probability ? team1 : team2;
+    }
+
+
+
+
+
+    function displayPlayoffRound(bracket, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+
+        bracket.forEach((matchup) => {
             const matchupElement = document.createElement('div');
-            matchupElement.textContent = `${matchup.highSeed.team.name} vs ${matchup.lowSeed.team.name} - Winner: ${matchup.winner ? matchup.winner.name : 'TBD'}`;
-            playoffContainer.appendChild(matchupElement);
+            matchupElement.classList.add('matchup');
+
+            const team1Element = document.createElement('span');
+            team1Element.classList.add('team');
+            team1Element.textContent = `${matchup.highSeed.team.name} ${matchup.highSeed.team.playoffWins}`;
+
+            const vsElement = document.createElement('span');
+            vsElement.textContent = ' vs ';
+
+            const team2Element = document.createElement('span');
+            team2Element.classList.add('team');
+            team2Element.textContent = `${matchup.lowSeed.team.name} ${matchup.lowSeed.team.playoffWins}`;
+
+
+            matchupElement.appendChild(team1Element);
+            matchupElement.appendChild(vsElement);
+            matchupElement.appendChild(team2Element);
+
+            container.appendChild(matchupElement);
         });
     }
-    function generateSemiFinals(playoffBracket) {
-        const semiFinals = [];
-        const winners = playoffBracket.filter((matchup) => matchup.winner);
+    function displayWinner(winner, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
 
-        for (let i = 0; i < winners.length - 1; i += 2) {
-            if (winners[i].winnerSeed.seed < winners[i + 1].winnerSeed.seed) {
-                const playoffMatchup = {
-                    highSeed: winners[i].winnerSeed,
-                    lowSeed: winners[i + 1].winnerSeed,
-                };
-                semiFinals.push(playoffMatchup);
-            } else {
-                const playoffMatchup = {
-                    highSeed: winners[i + 1].winnerSeed,
-                    lowSeed: winners[i].winnerSeed,
-                };
-                semiFinals.push(playoffMatchup);
-            }
-        }
+        const winnerElement = document.createElement('div');
+        winnerElement.classList.add('matchup', 'winner');
+        winnerElement.textContent = `${winner.name} ${winner.playoffWins}`;
 
-        return semiFinals;
-    }
-    function generateConferenceFinals(eastSemiFinals, westSemiFinals) {
-        const eastFinalMatchup = {
-            highSeed: eastSemiFinals[0].highSeed,
-            lowSeed: eastSemiFinals[0].lowSeed,
-        };
-
-        const westFinalMatchup = {
-            highSeed: westSemiFinals[0].highSeed,
-            lowSeed: westSemiFinals[0].lowSeed,
-        };
-
-        return { eastFinalMatchup, westFinalMatchup };
-    }
-    function simulatePlayoffMatchup(highSeed, lowSeed) {
-        const winner = simulatePlayoffSeries(highSeed.team, lowSeed.team);
-        const winnerSeed = winner === highSeed.team ? highSeed : lowSeed;
-
-        return { winner: winner, winnerSeed: winnerSeed, lowSeed: lowSeed, highSeed: highSeed };
+        container.appendChild(winnerElement);
     }
 
-    function displayConferenceFinals(finalResult, containerId) {
-        const finalContainer = document.getElementById(containerId);
-        finalContainer.innerHTML = '';
+    /*function displayWinners(winners, containerId) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
 
-        if (finalResult && finalResult.winnerSeed && finalResult.winnerSeed.team ) {
-            const matchupElement = document.createElement('div');
-            matchupElement.textContent = `${finalResult.winnerSeed.team.name} vs ${finalResult.winnerSeed === finalResult.highSeed ? finalResult.lowSeed.team.name : finalResult.highSeed.team.name} - Winner: ${finalResult.winner.name}`;
-            finalContainer.appendChild(matchupElement);
-        } else {
-            const matchupElement = document.createElement('div');
-            matchupElement.textContent = 'No results available.';
-            finalContainer.appendChild(matchupElement);
-        }
-    }
+        //for(let i =0; i < winners.length; i++){
 
-    function displayNBAFinals(finalResult, containerId) {
-        const finalContainer = document.getElementById(containerId);
-        finalContainer.innerHTML = '';
 
-        if (finalResult && finalResult.winnerSeed && finalResult.winnerSeed.team && finalResult.highSeed && finalResult.lowSeed) {
-            const matchupElement = document.createElement('div');
-            matchupElement.textContent = `NBA Finals: ${finalResult.winnerSeed.team.name} vs ${finalResult.winnerSeed === finalResult.highSeed ? finalResult.lowSeed.team.name : finalResult.highSeed.team.name} - Winner: ${finalResult.winner.name}`;
-            finalContainer.appendChild(matchupElement);
-        } else {
-            const matchupElement = document.createElement('div');
-            matchupElement.textContent = 'No results available.';
-            finalContainer.appendChild(matchupElement);
-        }
-    }
+            const winnerElement = document.createElement('div');
+            winnerElement.classList.add('matchup','winner');
+            console.log("hi", winners[0])
+            winnerElement.textContent = winners[0].highSeed.name;
+            winnerElement.textContent = winners[0].lowSeed.name;
+            container.appendChild(winnerElement);
+        //}
+    }*/
 
     // Add event listener to the button
     const simulateButton = document.getElementById('simulateButton');
